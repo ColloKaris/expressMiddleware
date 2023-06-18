@@ -13,6 +13,13 @@ app.use((req,res,next) => {
     next();
 })
 
+app.use('/dogs', (req, res, next) =>{
+    console.log("I LOVE DOGS!!");
+    next()
+})
+
+
+
 
 //app.use(morgan('tiny'))
 
@@ -25,6 +32,11 @@ app.get('/', (req,res) => {
 app.get('/dogs', (req,res) => {
     console.log(`REQUEST DATE: ${req.requestTime}`)
     res.send('WOOF WOOF!!')
+})
+
+// Add a 404 page
+app.use((req,res) =>{
+    res.status(404).send("404 - NOT FOUND")
 })
 
 
