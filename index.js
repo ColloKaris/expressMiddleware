@@ -18,6 +18,18 @@ app.use('/dogs', (req, res, next) =>{
     next()
 })
 
+const verifyPassword = (req,res,next) => {
+    //get the query string
+    const { password } = req.query
+    if (password === 'chickennugget') {
+        next();
+    }
+    res.send('SORRY YOU NEED A PASSWORD')
+}
+
+app.get('/secret', verifyPassword ,(req,res) => {
+    res.send("I WEAR HEADPHONES")
+})
 
 
 
@@ -38,6 +50,8 @@ app.get('/dogs', (req,res) => {
 app.use((req,res) =>{
     res.status(404).send("404 - NOT FOUND")
 })
+
+
 
 
 
