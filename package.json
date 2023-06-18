@@ -1,0 +1,24 @@
+{
+  "name": "expressmiddleware",
+  "version": "1.0.0",
+  "description": "Middlewares in ExpressJS by Colt Steele",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ColloKaris/expressMiddleware.git"
+  },
+  "author": "Collins Kariuki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ColloKaris/expressMiddleware/issues"
+  },
+  "homepage": "https://github.com/ColloKaris/expressMiddleware#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  }
+}
