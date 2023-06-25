@@ -1,23 +1,30 @@
-// Making our own promises
+// const sing = async () => {
+//   return "LA LA LA LA";
+// };
+
+// sing()
+//   .then((data) => {
+//     throw "PROBLEM ENCOUNTERED";
+//     console.log("PROMISE RESOLVED WITH:", data);
+//   })
+//   .catch((err) => {
+//     console.log("OH NO, PROMISE REJECTED!");
+//     console.log(err);
+//   });
 
 
-const fakeRequest = (url) => {
-    return new Promise((resolve, reject) => {
-        const rand = Math.random();
-        setTimeout(() => {
-            if(rand < 0.7) {
-                resolve('YOUR FAKE DATA HERE');
-            }
-            reject('REQUEST ERROR');
-        }, 1000)
-    })
+const login = async (username, password) => {
+    if(!username || !password) throw 'Missing Credentials'
+    if(password === 'corgifeetarecute') return 'WELCOME!'
+    throw 'Invalid Password'
 }
 
-fakeRequest('/dogs/1')
-.then((data) => {
-    console.log("DONE WITH REQUEST")
-    console.log("Data is:", data)
+login('collins',"corgifeetarecute")
+.then(msg => {
+    console.log("Logged IN")
+    console.log(msg)
 })
-.catch((err) => {
-    console.log("OH NO!!", err)
+.catch(err => {
+    console.log("ERROR!!")
+    console.log(err)
 })
