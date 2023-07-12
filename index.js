@@ -24,14 +24,13 @@ const verifyPassword = (req,res,next) => {
     if (password === 'chickennugget') {
         next();
     }
-    res.send('SORRY YOU NEED A PASSWORD')
+    //res.send('SORRY YOU NEED A PASSWORD')
+    throw new Error("Password required!!!")
 }
 
 app.get('/secret', verifyPassword ,(req,res) => {
     res.send("I WEAR HEADPHONES")
 })
-
-
 
 //app.use(morgan('tiny'))
 
@@ -39,6 +38,11 @@ app.get('/secret', verifyPassword ,(req,res) => {
 app.get('/', (req,res) => {
     console.log(`REQUEST DATE: ${req.requestTime}`)
     res.send('HOME PAGE!')
+})
+
+// Route that causes an error
+app.get('/error', (req,res) => {
+    chicken.fly()
 })
 
 app.get('/dogs', (req,res) => {
@@ -51,7 +55,15 @@ app.use((req,res) =>{
     res.status(404).send("404 - NOT FOUND")
 })
 
-
+// Error Handling middleware
+app.use((err, req, res, next) => {
+    console.log("****************************************")
+    console.log("******************ERROR*****************")
+    console.log("****************************************")
+    //res.status(500).send("OH BOY, WE GOT AN ERROR!!!")
+    console.log(err)
+    next(err);
+})
 
 
 
